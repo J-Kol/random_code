@@ -1,19 +1,19 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.optimize import curve_fit 
+#from scipy.optimize import curve_fit 
 
-p = 0.9993775545226538
-t = 0.2722592910959406
-A = 1 / 1831.5
+p = 0.9
+t = 0.7
+A = 1 / 2.0
 
-n_put = 50
+n_pnt = 100
 x_start = 0
-x_end = 1.8
+x_end = 3.0
 
-X = np.linspace(x_start, x_end, n_put)
+X = np.linspace(x_start, x_end, n_pnt)
 Y = A/((X**2-p**2)**2+t**2*p**2)
 
-with open("data.txt", "w") as f:
+with open("lorentz_curve.txt", "w") as f:
     for x, y in zip(X, Y):
         f.write(f"{x}, {y}\n")
     #print(X, Y, file=f)
@@ -21,8 +21,8 @@ with open("data.txt", "w") as f:
 plt.plot(X, Y, "+", linewidth = 4, color=(0, 0, 0),label="Your Data")
 
 plt.grid()
-plt.xlabel("freq/f")
+plt.xlabel("frequence f/f0")
 plt.ylabel("amplitude")
-plt.title("Fitted Graph",fontsize = 18);
+plt.title("Lorenz fit",fontsize = 18);
 plt.legend()
 plt.show()
