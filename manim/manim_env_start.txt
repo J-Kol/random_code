@@ -1,0 +1,4 @@
+cd Dokumente/programmieren/python/
+#python3 -m venv .venv
+source .venv/bin/activate
+manim -pql your_script.py MyScene
